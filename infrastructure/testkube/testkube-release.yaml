@@ -25,16 +25,16 @@ spec:
           kubernetes.io/ingress.class: nginx
           nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
           nginx.ingress.kubernetes.io/ssl-redirect: "false"
-          cert-manager.io/cluster-issuer: letsencrypt-dev
-          acme.cert-manager.io/http01-edit-in-place: "true"
+          # cert-manager.io/cluster-issuer: letsencrypt-dev
+          # acme.cert-manager.io/http01-edit-in-place: "true"
         path: /
         hosts:
           - podinfo.local
         tlsenabled: "false"
-        tls:
-          - hosts:
-              - podinfo.local
-            secretName: testkube-cert-secret
+        # tls:
+        #   - hosts:
+        #       - podinfo.local
+        #     secretName: testkube-cert-secret
       apiServerEndpoint: "podinfo.local/results"
     testkube-api:
       uiIngress:
@@ -45,14 +45,14 @@ spec:
           nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
           nginx.ingress.kubernetes.io/ssl-redirect: "false"
           nginx.ingress.kubernetes.io/rewrite-target: /$1
-          cert-manager.io/cluster-issuer: letsencrypt-prod
-          acme.cert-manager.io/http01-edit-in-place: "true"
+          # cert-manager.io/cluster-issuer: letsencrypt-prod
+          # acme.cert-manager.io/http01-edit-in-place: "true"
         path: /results/(v\d/.*)
         hosts:
           - podinfo.local
         tlsenabled: "false"
-        tls:
-          - hosts:
-              - podinfo.local
-            secretName: testkube-cert-secret
+        # tls:
+        #   - hosts:
+        #       - podinfo.local
+        #     secretName: testkube-cert-secret
 
