@@ -47,6 +47,68 @@ spec:
           nginx.ingress.kubernetes.io/rewrite-target: /$1
           # cert-manager.io/cluster-issuer: letsencrypt-prod
           # acme.cert-manager.io/http01-edit-in-place: "true"
+
+          # for websockets
+          nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+          nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+
+          nginx.ingress.kubernetes.io/server-snippet: |
+            set $methodallowed "";
+            set $pathallowed "";
+    
+            if ( $request_method = GET ){
+              set $methodallowed "true";
+              set $pathallowed "true";
+            }
+    
+            if ( $request_method = POST ){
+              set $methodallowed "true";
+            }
+    
+            if ( $request_method = OPTIONS ){
+              set $methodallowed "true";
+            } 
+    
+            if ( $request_method = PATCH ){
+              set $methodallowed "true";
+            }      
+    
+            if ( $uri ~ "^(.*)/tests/(.*)/executions$" ){
+              set $pathallowed "true";
+            } 
+    
+            if ( $uri ~ "^(.*)/tests/(.*)/executions/(.*)$" ){
+              set $pathallowed "true";
+            }  
+    
+            if ( $uri ~ "^(.*)/test-suites/(.*)/executions$" ){
+              set $pathallowed "true";
+            }
+    
+            if ( $uri ~ "^(.*)/test-suites/(.*)/executions/(.*)$" ){
+              set $pathallowed "true";
+            }
+    
+            if ( $uri ~ "^(.*)/tests$" ){
+              set $pathallowed "true";
+            }  
+    
+            if ( $uri ~ "^(.*)/tests/(.*)$" ){
+              set $pathallowed "true";
+            }
+    
+            if ( $uri ~ "^(.*)/test-suite-executions/(.*)$" ){
+              set $pathallowed "true";
+            }
+    
+            if ( $uri ~ "^(.*)/repositories$" ){
+              set $pathallowed "true";
+            }
+    
+            set $condition "$methodallowed+$pathallowed";
+            if ( $condition != "true+true" ) {
+              return 401;
+            }
         path: /results/(v\d/.*)
         hosts:
           - podinfo.local
