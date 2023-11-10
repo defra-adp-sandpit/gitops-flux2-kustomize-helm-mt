@@ -13,7 +13,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: testkube
-        nnamespace: cluster-config
+        namespace: cluster-config
       version: "1.15.25"
   values:
    testkube-dashboard:
