@@ -16,7 +16,7 @@ spec:
         namespace: cluster-config
       version: "1.15.25"
   values:
-   testkube-dashboard:
+    testkube-dashboard:
       enabled: "true"
       ingress:
         enabled: "true" 
@@ -35,7 +35,7 @@ spec:
               - podinfo.local
             secretName: testkube-cert-secret
       apiServerEndpoint: "podinfo.local/results"
-   testkube-api:
+    testkube-api:
       uiIngress:
         enabled: true
         annotations:
