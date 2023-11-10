@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: testkube
-  namespace: flux-system
+  namespace: cluster-config
 spec:
   interval: 5m0s
   releaseName: testkube
@@ -13,7 +13,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: testkube
-        namespace: flux-system
+        nnamespace: cluster-config
       version: "1.15.25"
   values:
    testkube-dashboard:
