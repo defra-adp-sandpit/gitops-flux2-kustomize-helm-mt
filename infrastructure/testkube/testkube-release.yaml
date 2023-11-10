@@ -16,26 +16,6 @@ spec:
         namespace: cluster-config
       version: "1.15.25"
   values:
-    testkube-dashboard:
-      enabled: "true"
-      ingress:
-        className: "nginx"
-        enabled: "true" 
-        annotations:
-          kubernetes.io/ingress.class: nginx
-          nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-          nginx.ingress.kubernetes.io/ssl-redirect: "false"
-          # cert-manager.io/cluster-issuer: letsencrypt-dev
-          # acme.cert-manager.io/http01-edit-in-place: "true"
-        path: /
-        hosts:
-          - podinfo.local
-        tlsenabled: "false"
-        # tls:
-        #   - hosts:
-        #       - podinfo.local
-        #     secretName: testkube-cert-secret
-      apiServerEndpoint: "podinfo.local/results"
     testkube-api:
       uiIngress:
         enabled: true
@@ -118,3 +98,25 @@ spec:
         #       - podinfo.local
         #     secretName: testkube-cert-secret
 
+
+
+    testkube-dashboard:
+      enabled: "true"
+      ingress:
+        className: "nginx"
+        enabled: "true" 
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+          nginx.ingress.kubernetes.io/ssl-redirect: "false"
+          # cert-manager.io/cluster-issuer: letsencrypt-dev
+          # acme.cert-manager.io/http01-edit-in-place: "true"
+        path: /
+        hosts:
+          - podinfo.local
+        tlsenabled: "false"
+        # tls:
+        #   - hosts:
+        #       - podinfo.local
+        #     secretName: testkube-cert-secret
+      apiServerEndpoint: "podinfo.local/results"
