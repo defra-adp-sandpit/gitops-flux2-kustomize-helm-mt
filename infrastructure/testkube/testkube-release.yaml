@@ -93,11 +93,11 @@ spec:
           #   }
         path: /results/(v\d/.*)
         hosts:
-          - podinfo.local
+          - testkube-api.local
         tlsenabled: "false"
         # tls:
         #   - hosts:
-        #       - podinfo.local
+        #       - testkube-api
         #     secretName: testkube-cert-secret
 
 
@@ -117,10 +117,10 @@ spec:
           nginx.ingress.kubernetes.io/cors-allow-credentials: "false"
         path: /
         hosts:
-          - podinfo.local
+          - testkube-dashboard.local
         tlsenabled: "false"
         # tls:
         #   - hosts:
-        #       - podinfo.local
+        #       - testkube-dashboard.local
         #     secretName: testkube-cert-secret
-      apiServerEndpoint: "podinfo.local:8000/results"
+      apiServerEndpoint: "testkube-api.local/results"
