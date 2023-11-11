@@ -1,0 +1,13 @@
+apiVersion: executor.testkube.io/v1
+kind: Executor
+metadata:
+  name: uitest-executor
+  namespace: testkube
+spec:
+  types:
+    - webdriver.io
+    - nodejs-ui-tests
+  executor_type: container
+  image: <replace>/<replace>:1.0.0
+  features:
+    - artifacts
