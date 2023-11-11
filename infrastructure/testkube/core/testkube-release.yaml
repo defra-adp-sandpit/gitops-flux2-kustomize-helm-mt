@@ -5,6 +5,7 @@ metadata:
   namespace: cluster-config
 spec:
   interval: 5m0s
+  targetNamespace: testkube
   releaseName: testkube
   targetNamespace: testkube
   chart:
