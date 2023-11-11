@@ -7,7 +7,6 @@ spec:
   interval: 10m
   dependsOn:
     - name: testkube-core
-  targetNamespace: testkube
   sourceRef:
     kind: GitRepository
     name: cluster-config
