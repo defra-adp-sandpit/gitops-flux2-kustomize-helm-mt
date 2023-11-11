@@ -123,4 +123,4 @@ spec:
         #   - hosts:
         #       - podinfo.local
         #     secretName: testkube-cert-secret
-      apiServerEndpoint: "podinfo.local/results"
+      apiServerEndpoint: "podinfo.local:8000/results"
