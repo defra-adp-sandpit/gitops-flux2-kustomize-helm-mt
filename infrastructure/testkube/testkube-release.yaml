@@ -113,6 +113,8 @@ spec:
           nginx.ingress.kubernetes.io/ssl-redirect: "false"
           # cert-manager.io/cluster-issuer: letsencrypt-dev
           # acme.cert-manager.io/http01-edit-in-place: "true"
+          nginx.ingress.kubernetes.io/enable-cors: "true"
+          nginx.ingress.kubernetes.io/cors-allow-credentials: "false"
         path: /
         hosts:
           - podinfo.local
