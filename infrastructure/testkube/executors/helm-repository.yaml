@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: adp-testkube-executors
+  namespace: cluster-config
+spec:
+  type: oci
+  interval: 5m
+  url: oci://aksfluxpoc08acr.azurecr.io/helm
+  provider: azure

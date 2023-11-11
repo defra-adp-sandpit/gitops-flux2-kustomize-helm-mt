@@ -1,4 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - zap-executor.yaml
+  - helm-repository.yaml
+  - helm-release.yaml
+  # - zap-executor.yaml
