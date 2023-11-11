@@ -15,4 +15,4 @@ spec:
   path: "./infrastructure/testkube/executors/"
   prune: true
   wait: true
-  timeout: 1m
+  timeout: 5m
