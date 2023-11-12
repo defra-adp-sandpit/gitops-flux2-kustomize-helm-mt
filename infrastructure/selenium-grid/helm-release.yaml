@@ -6,7 +6,7 @@ metadata:
 spec:
   interval: 5m0s
   targetNamespace: selenium-grid
-  releaseName: testkube
+  releaseName: selenium-grid
   chart:
     spec:
       chart: selenium-grid
@@ -14,4 +14,3 @@ spec:
         kind: HelmRepository
         name: docker-selenium
         namespace: cluster-config
-      version: "1.15.25"
