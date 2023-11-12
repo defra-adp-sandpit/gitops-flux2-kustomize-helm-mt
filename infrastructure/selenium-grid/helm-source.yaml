@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: docker-selenium
+  namespace: cluster-config
+spec:
+  interval: 5m
+  url: https://www.selenium.dev/docker-selenium

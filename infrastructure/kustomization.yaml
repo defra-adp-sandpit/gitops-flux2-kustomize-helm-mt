@@ -6,3 +6,4 @@ resources:
   - redis
   - dashboard/
   - testkube/
+  - selenium-grid/
