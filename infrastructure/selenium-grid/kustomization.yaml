@@ -3,3 +3,9 @@ kind: Kustomization
 resources:
   - helm-source.yaml
   - helm-release.yaml
+
+patches:
+  - path: selenium-grid-values.yaml
+    target:
+      kind: HelmRelease
+      name: selenium-grid
