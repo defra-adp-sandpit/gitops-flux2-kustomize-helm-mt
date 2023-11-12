@@ -26,41 +26,41 @@ spec:
         # Image tag for browser's nodes
         nodesImageTag: 4.15.0-20231110
 
-  # Keda scaled object configuration
-  autoscaling:
-    # Enable autoscaling. Implies installing KEDA
-    enabled: false
-    # Enable autoscaling without automatically installing KEDA
-    enableWithExistingKEDA: false
-
-  # Configure the ingress resource to access the Grid installation.
-  ingress:
-    enabled: true
-    className: "nginx"
-    hostname: "selenium-grid.local"
-    path: /
-    pathType: Prefix
+    # Keda scaled object configuration
+    autoscaling:
+      # Enable autoscaling. Implies installing KEDA
+      enabled: false
+      # Enable autoscaling without automatically installing KEDA
+      enableWithExistingKEDA: false
   
-  chromeNode:
-    enabled: true
-    # NOTE: Only used when autoscaling.enabled is false
-    # Enable creation of Deployment
-    # true (default) - if you want long living pods
-    # false - for provisioning your own custom type such as Jobs
-    deploymentEnabled: true
-  
-    # Number of chrome nodes
-    replicas: 1
-    # Image of chrome nodes
-    imageName: selenium/node-chrome
-  
-  # Configuration for firefox nodes
-  firefoxNode:
-    # Enable firefox nodes
-    enabled: false
-  
-  # Configuration for edge nodes
-  edgeNode:
-    # Enable edge nodes
-    enabled: false
+    # Configure the ingress resource to access the Grid installation.
+    ingress:
+      enabled: true
+      className: "nginx"
+      hostname: "selenium-grid.local"
+      path: /
+      pathType: Prefix
+    
+    chromeNode:
+      enabled: true
+      # NOTE: Only used when autoscaling.enabled is false
+      # Enable creation of Deployment
+      # true (default) - if you want long living pods
+      # false - for provisioning your own custom type such as Jobs
+      deploymentEnabled: true
+    
+      # Number of chrome nodes
+      replicas: 1
+      # Image of chrome nodes
+      imageName: selenium/node-chrome
+    
+    # Configuration for firefox nodes
+    firefoxNode:
+      # Enable firefox nodes
+      enabled: false
+    
+    # Configuration for edge nodes
+    edgeNode:
+      # Enable edge nodes
+      enabled: false
   
