@@ -4,6 +4,7 @@ resources:
   - ../base/podinfo
   - ../base/ffc-demo-web 
   - ingress.yaml
+  - priority-class.yaml
 
 patches:
   - path: podinfo-values.yaml
