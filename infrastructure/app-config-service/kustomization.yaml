@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
   - config-repository.yaml
   - config-release.yaml
+
+patches:
+  - path: app-config-service-values.yaml
