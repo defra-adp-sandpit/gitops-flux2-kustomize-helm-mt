@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   # - ../base/podinfo
   # - ingress.yaml
-  - priority-class.yaml
   - ../base/ffc-demo-web 
 
 patches:

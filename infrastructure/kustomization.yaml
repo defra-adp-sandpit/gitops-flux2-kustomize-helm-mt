@@ -8,3 +8,4 @@ resources:
   - testkube/
   - selenium-grid/
   - app-config-service/
+  - priority-class.yaml  
