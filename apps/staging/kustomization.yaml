@@ -3,8 +3,10 @@ kind: Kustomization
 resources:
   # - ../base/podinfo
   # - ingress.yaml
-  - ../base/ffc-demo-web 
+  # - ../base/ffc-demo-web
+  - ../base/ffc-demo-payment-web   
 
 patches:
   # - path: podinfo-values.yaml
-  - path: ffc-demo-web-values.yaml  
+  # - path: ffc-demo-web-values.yaml
+  - path: ffc-demo-payment-web-values.yaml

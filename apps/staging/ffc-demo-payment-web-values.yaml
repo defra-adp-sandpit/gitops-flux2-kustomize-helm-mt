@@ -1,0 +1,45 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ffc-demo-payment-web
+  namespace: cluster-config
+spec:
+  values:
+    environment: production
+    image: aksfluxpoc08acr.azurecr.io/image/ffc-demo-payment-web:1.19.10 # {"$imagepolicy": "flux-config:ffc-demo-payment-web"}
+    serviceAccount:
+      name: ffc-demo-payment-web
+    name: ffc-demo-payment-web
+    namespace: ffc-demo
+    labels: {}
+    container:
+      requestMemory: 20Mi
+      requestCpu: 20m
+      limitMemory: 100Mi
+      limitCpu: 100m
+      imagePullPolicy: Always
+      paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
+    ingress:
+      class: nginx
+      endpoint: ffc-demo-payment-web
+      server: demo.example.local
+    deployment:
+      priorityClassName: default
+    containerConfigMap:
+      name: 'ffc-demo-payment-web-config-map'
+      configServiceUrl: 'https://aksfluxpoc08appcfg.azconfig.io'
+      keyValues:
+        labelFilter: 'ffc-demo-payment-web'
+        refresh:
+          interval: 2m
+          monitorKey: 'Sentinel'
+          monitorLabel: 'ffc-demo-payment-web'
+        keyVaults:
+          secretName: ffc-demo-payment-web-container-secret
+          refresh:
+            interval: 2m
+    containerSecret:
+      name: ffc-demo-payment-web-container-secret
+    managedIdPrefix: temp
+    userAssignedIdentity:
+      managedIdName: ffc-demo-payment-web
