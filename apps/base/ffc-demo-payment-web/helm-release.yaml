@@ -12,7 +12,7 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: ffc-demo-payment-web
+        name: ffc-demo
         namespace: cluster-config
   install:
     createNamespace: true
