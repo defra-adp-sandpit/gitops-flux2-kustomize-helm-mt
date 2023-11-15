@@ -22,6 +22,7 @@ spec:
       paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
     ingress:
       class: nginx
+      ingressClassName: nginx
       endpoint: ffc-demo-payment-web
       server: demo.example.local
     deployment:
