@@ -25,6 +25,7 @@ spec:
       ingressClassName: nginx
       endpoint: ffc-demo-payment-web
       server: demo.example.local
+      port: 3000
     deployment:
       priorityClassName: default
     containerConfigMap:
