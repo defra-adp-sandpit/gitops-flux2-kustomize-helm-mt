@@ -27,7 +27,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ffc-demo-payment-web
+  name: ffc-demo-payment-web-two
   namespace: ffc-demo
   annotations:
     kubernetes.io/ingress.class: "nginx"
