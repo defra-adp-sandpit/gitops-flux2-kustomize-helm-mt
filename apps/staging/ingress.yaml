@@ -37,12 +37,39 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: adp-apps.local
+  - host: ffc-demo-payment-web.local
     http:
       paths:
       - backend:
           service:
             name: ffc-demo-payment-web
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ffc-demo-web-two
+  namespace: ffc-demo
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    # nginx.ingress.kubernetes.io/use-regex: "true"
+    # nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ffc-demo-web.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: ffc-demo-web
             port:
               number: 80
         path: /

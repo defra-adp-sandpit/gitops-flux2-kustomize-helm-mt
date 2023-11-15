@@ -5,58 +5,33 @@ metadata:
   namespace: cluster-config
 spec:
   values:
-    environment: development
+    environment: production
+    image: aksfluxpoc08acr.azurecr.io/image/ffc-demo-web:4.32.4 # {"$imagepolicy": "flux-config:ffc-demo-web"}
+    serviceAccount:
+      name: ffc-demo-web
+      roleArn: true
     name: ffc-demo-web
     namespace: ffc-demo
-    image: aksfluxpoc08acr.azurecr.io/image/ffc-demo-web:4.32.4 # {"$imagepolicy": "flux-config:ffc-demo-web"}
-    labels:
-      component: web
-    containerConfigMap:
-      name: ffc-demo-web-config-map
-    appInsights:
-      connectionString:
-    containerSecret:
-      name: ffc-demo-web-container-secret
-      type: Opaque
-    service:
-      port: 80
-      type: ClusterIP
+    labels: {}
     container:
-      redisHostname: aksfluxpoc08redis.redis.cache.windows.net
-      redisPort: 6380
-      redisPartition: ffc-demo
+      requestMemory: 20Mi
+      requestCpu: 20m
+      limitMemory: 100Mi
+      limitCpu: 100m
       imagePullPolicy: Always
-      requestMemory: 50Mi
-      requestCpu: 50m
-      limitMemory: 200Mi
-      limitCpu: 400m
-      restClientTimeoutMillis: 20000
-      staticCacheTimeoutMillis: 54000
-      port: 3000
-      messageQueueHost: aksfluxpoc08sb.servicebus.windows.net
-      claimQueueAddress: claim
+      paymentServiceUrl: http://ffc-demo-service.ffc-demo
     ingress:
       class: nginx
-      endpoint: ffc-demo
-      server: ffc-apps.local
-      annotations:
-        kubernetes.io/ingress.class: nginx
+      ingressClassName: nginx
+      endpoint: ffc-demo-web
+      server: demo.example.local
     deployment:
-      restartPolicy: Always
       priorityClassName: default
-      replicas: 1
-      minReadySeconds: 5
-      imagePullSecret:
-      useLinkerd: true
-    readinessProbe:
-      path: /healthy
-      port: 3000
-      initialDelaySeconds: 20
-      periodSeconds: 10
-      failureThreshold: 3
-    livenessProbe:
-      path: /healthz
-      port: 3000
-      initialDelaySeconds: 30
-      periodSeconds: 10
-      failureThreshold: 3
+    containerConfigMap:
+      name: 'ffc-demo-web-config-map'
+    containerSecret:
+      name: ffc-demo-web-container-secret
+      type: opaque
+    # managedIdPrefix: temp
+    # userAssignedIdentity:
+    #   managedIdName: ffc-demo-web
