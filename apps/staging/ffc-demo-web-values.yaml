@@ -10,7 +10,7 @@ spec:
     serviceAccount:
       name: ffc-demo-web
       roleArn: true
-    name: ffc-demo-web
+    name: postgresql
     namespace: ffc-demo
     labels: {}
     container:
