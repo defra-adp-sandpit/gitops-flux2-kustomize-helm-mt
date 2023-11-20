@@ -8,9 +8,9 @@ spec:
     environment: production
     image: aksfluxpoc08acr.azurecr.io/image/ffc-demo-web:4.32.4 # {"$imagepolicy": "flux-config:ffc-demo-web"}
     serviceAccount:
-      name: ffc-demo-web
+      name: postgresql
       roleArn: true
-    name: postgresql
+    name: ffc-demo-web
     namespace: ffc-demo
     labels: {}
     container:
