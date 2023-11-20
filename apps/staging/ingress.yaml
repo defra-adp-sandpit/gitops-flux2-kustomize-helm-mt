@@ -44,7 +44,7 @@ spec:
           service:
             name: ffc-demo-payment-web
             port:
-              number: 80
+              number: 3000
         path: /
         pathType: Prefix
 
@@ -71,6 +71,6 @@ spec:
           service:
             name: ffc-demo-web
             port:
-              number: 80
+              number: 3000
         path: /
         pathType: Prefix
