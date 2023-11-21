@@ -11,12 +11,12 @@ spec:
       branch: master
       type: git
       uri: https://github.com/DEFRA/ffc-demo-web.git
-      path: test/performance
-      workingDir: test/performance/
+      path: test/performance/FFCTestPlan.jmx
+      workingDir: test/performance
 
   executionRequest:
-    args:
-      - "FFCTestPlan.jmx"
+    # args:
+    #   - ""
     jobTemplate: "apiVersion: batch/v1\nkind: Job\nspec:\n  template:\n    spec:\n      containers:\n        - name: \"{{ .Name }}\"\n          image: {{ .Image }}\n          resources:\n            requests:\n              memory: 512Mi\n              cpu: 512m\n"
     activeDeadlineSeconds: 180
     artifactRequest:
