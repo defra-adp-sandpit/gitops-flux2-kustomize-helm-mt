@@ -8,7 +8,7 @@ spec:
   content:
     type: git
     repository:
-      branch: master
+      branch: kb/testkube-changes
       type: git
       uri: https://github.com/DEFRA/ffc-demo-web.git
       path: test/performance
@@ -26,6 +26,7 @@ spec:
       - "-Jgroup1.threads=8"
       - "-Jgroup1.loops=1"
       - "-Jgroup1.ramp=1"
+      - "-JconfigFilename=jmeterConfig-adp-aks.csv"
       - "FFCTestPlan.jmx"
     artifactRequest:
       dirs:
