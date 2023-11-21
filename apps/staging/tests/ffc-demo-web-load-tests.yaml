@@ -6,17 +6,27 @@ metadata:
 spec:
   type: jmeter/test
   content:
-    type: git-file
+    type: git
     repository:
-      branch: main
+      branch: master
       type: git
       uri: https://github.com/DEFRA/ffc-demo-web.git
-      path: test/performance/FFCTestPlan.jmx
+      path: test/performance
       workingDir: test/performance/
 
   executionRequest:
+    args:
+      - "FFCTestPlan.jmx"
+    jobTemplate: "apiVersion: batch/v1\nkind: Job\nspec:\n  template:\n    spec:\n      containers:\n        - name: \"{{ .Name }}\"\n          image: {{ .Image }}\n          resources:\n            requests:\n              memory: 512Mi\n              cpu: 512m\n"
+    activeDeadlineSeconds: 180
     artifactRequest:
       dirs:
         - test-output 
       storageBucket: jmeter-artifacts
       omitFolderPerExecution: true
+    variables:
+      TARGET_HOSTNAME:
+        name: TARGET_HOSTNAME
+        type: basic
+        value: ffc-demo-web.default.svc.cluster.local
+        valueFrom: {}      
