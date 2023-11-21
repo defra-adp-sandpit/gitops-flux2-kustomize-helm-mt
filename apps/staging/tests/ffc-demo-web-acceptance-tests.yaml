@@ -14,7 +14,7 @@ spec:
       type: git
       uri: https://github.com/DEFRA/ffc-demo-web.git
       path: test/acceptance
-      workingDir: test/acceptance
+      # workingDir: test/acceptance
 
   executionRequest:
     artifactRequest:

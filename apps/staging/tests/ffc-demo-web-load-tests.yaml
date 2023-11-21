@@ -12,7 +12,6 @@ spec:
       type: git
       uri: https://github.com/DEFRA/ffc-demo-web.git
       path: test/performance/FFCTestPlan.jmx
-      workingDir: test/performance
 
   executionRequest:
     # args:
