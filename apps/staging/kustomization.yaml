@@ -6,6 +6,7 @@ resources:
   - ../base/ffc-demo-web
   - ../base/ffc-demo-payment-web
   - ingress.yaml
+  - ./tests
 
 patches:
   # - path: podinfo-values.yaml

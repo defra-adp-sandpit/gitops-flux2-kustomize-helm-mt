@@ -1,0 +1,22 @@
+apiVersion: tests.testkube.io/v3
+kind: Test
+metadata:
+  name: ffc-demo-web-load-tests
+  namespace: ffc-demo
+spec:
+  type: jmeter/test
+  content:
+    type: git-file
+    repository:
+      branch: main
+      type: git
+      uri: https://github.com/DEFRA/ffc-demo-web.git
+      path: test/performance/FFCTestPlan.jmx
+      workingDir: test/performance/
+
+  executionRequest:
+    artifactRequest:
+      dirs:
+        - test-output 
+      storageBucket: jmeter-artifacts
+      omitFolderPerExecution: true

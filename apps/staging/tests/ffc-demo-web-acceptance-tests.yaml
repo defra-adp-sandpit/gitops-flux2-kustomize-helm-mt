@@ -1,0 +1,42 @@
+apiVersion: tests.testkube.io/v3
+kind: Test
+metadata:
+  name: ffc-demo-web-acceptance-tests
+  namespace: ffc-demo
+  labels:
+    app: ffc-demo-service
+    service: ffc-demo-web
+spec:
+  content:
+    type: git  
+    repository:
+      branch: main
+      type: git
+      uri: https://github.com/DEFRA/ffc-demo-web.git
+      path: test/acceptance
+      workingDir: test/acceptance
+
+  executionRequest:
+    artifactRequest:
+      storageClassName: standard
+      volumeMountPath: /data/artifacts
+      dirs:
+        - ./html-reports/
+    variables:
+      CHROME_ARGS:
+        name: CHROME_ARGS
+        value: "--headless --ignore-certificate-errors --verbose"
+      TEST_ENVIRONMENT_ROOT_URL:
+        name: TEST_ENVIRONMENT_ROOT_URL
+        value: ffc-demo-web.default.svc.cluster.local
+      TARGET_HOSTNAME:
+        name: TARGET_HOSTNAME
+        type: basic
+        value: ffc-demo-web.default.svc.cluster.local
+        valueFrom: {}
+      MAX_INSTANCES:
+        name: MAX_INSTANCES
+        type: basic
+        value: "1"
+      
+  type: webdriverio/acceptancetest
