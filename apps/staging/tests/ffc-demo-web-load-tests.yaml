@@ -2,7 +2,7 @@ apiVersion: tests.testkube.io/v3
 kind: Test
 metadata:
   name: ffc-demo-web-load-tests
-  namespace: ffc-demo
+  namespace: testkube
 spec:
   type: jmeter/test
   content:
