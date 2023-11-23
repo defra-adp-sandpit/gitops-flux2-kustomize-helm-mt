@@ -3,14 +3,15 @@ kind: TestSuite
 metadata:
   name: ffc-demo-web-all-tests
   namespace: testkube
-  generation: 1
 spec:
-  description: Execute full Test Suite of ffc-demo-web-all tests
+  description: Execute full Test Suite of ffc-demo-web micro service
   executionRequest: {}
   steps:
-  - execute:
-      name: ffc-demo-web-load-tests
-  - delay:
-      duration: 2000
-  - execute:
-      name: ffc-demo-web-acceptance-tests
+  - stopOnFailure: false
+    execute:
+    - test: ffc-demo-web-load-tests
+    - delay: 1s
+    - test: ffc-demo-web-acceptance-tests
+  - stopOnFailure: false
+    downloadArtifacts:
+      allPreviousSteps: true

@@ -7,10 +7,9 @@ spec:
   resource: deployment
   resourceSelector:
     namespace: ffc-demo
-    name: ffc-demo-web
-    # labelSelector:
-    #   matchLabels:
-    #     app: ffc-demo-web
+    labelSelector:
+      matchLabels:
+        app.kubernetes.io/name: ffc-demo-web
   event: modified
   action: run
   execution: testsuite
