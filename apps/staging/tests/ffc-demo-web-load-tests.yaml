@@ -33,3 +33,42 @@ spec:
         - test-output 
       storageBucket: jmeter-artifacts
       omitFolderPerExecution: true
+
+
+---
+
+apiVersion: tests.testkube.io/v3
+kind: Test
+metadata:
+  name: ffc-demo-web-load-tests-afd
+  namespace: testkube
+spec:
+  type: jmeter/test
+  content:
+    type: git
+    repository:
+      branch: kb/testkube-changes
+      type: git
+      uri: https://github.com/DEFRA/ffc-demo-web.git
+      path: test/performance
+
+  executionRequest:
+    jobTemplate: "apiVersion: batch/v1\nkind: Job\nspec:\n  template:\n    spec:\n      containers:\n        - name: \"{{ .Name }}\"\n          image: {{ .Image }}\n          resources:\n            requests:\n              memory: 512Mi\n              cpu: 512m\n"
+    activeDeadlineSeconds: 180
+    variables:
+      TARGET_HOSTNAME:
+        name: TARGET_HOSTNAME
+        value: "ffc-demo-web.default.svc.cluster.local"
+        # valueFrom: {} 
+        type: basic
+    args:
+      - "-Jgroup1.threads=8"
+      - "-Jgroup1.loops=1"
+      - "-Jgroup1.ramp=1"
+      - "-JconfigFilename=jmeterConfig-adp-afd.csv"
+      - "FFCTestPlan.jmx"
+    artifactRequest:
+      dirs:
+        - test-output 
+      storageBucket: jmeter-artifacts
+      omitFolderPerExecution: true
