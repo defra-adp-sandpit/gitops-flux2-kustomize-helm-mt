@@ -1,0 +1,19 @@
+apiVersion: tests.testkube.io/v1
+kind: TestTrigger
+metadata:
+  name: testtrigger-ffc-demo-web-load-tests
+  namespace: testkube
+spec:
+  resource: deployment
+  resourceSelector:
+    namespace: ffc-demo
+    name: ffc-demo-web
+    # labelSelector:
+    #   matchLabels:
+    #     app: ffc-demo-web
+  event: modified
+  action: run
+  execution: testsuite
+  testSelector:
+    name: ffc-demo-web-all-tests
+    namespace: testkube
