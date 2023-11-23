@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - ffc-demo-web-acceptance-tests.yaml
   - ffc-demo-web-load-tests.yaml
+  - testtrigger.yaml
+  - testsuite.yaml
