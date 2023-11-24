@@ -3,8 +3,8 @@ kind: TestSuite
 metadata:
   name: ffc-demo-web-all-tests
   namespace: testkube
-  labels:
-    app: ffc-demo-web  
+  # labels:
+  #   app: ffc-demo-web  
 spec:
   description: Execute full Test Suite of ffc-demo-web micro service
   steps:
