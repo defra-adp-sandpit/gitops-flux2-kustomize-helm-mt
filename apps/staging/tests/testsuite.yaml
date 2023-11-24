@@ -7,7 +7,6 @@ metadata:
     app: ffc-demo-web  
 spec:
   description: Execute full Test Suite of ffc-demo-web micro service
-  executionRequest: {}
   steps:
   - stopOnFailure: false
     execute:
