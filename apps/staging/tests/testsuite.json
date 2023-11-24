@@ -1,9 +1,0 @@
-{
-    "name": "testkube-suite",
-    "description": "Testkube test suite, api, dashboard and performance",
-    "steps": [
-        {"execute": [{"test": "ffc-demo-web-load-tests"}, {"test": "ffc-demo-web-load-tests-afd"}]},
-        {"execute": [{"delay": "1s"}]},
-        {"downloadArtifacts": {"allPreviousSteps": true}, "execute": [{"test": "ffc-demo-web-acceptance-tests"}]}
-    ]
-}
