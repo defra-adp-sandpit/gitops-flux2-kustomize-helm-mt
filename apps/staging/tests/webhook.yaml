@@ -1,0 +1,34 @@
+apiVersion: executor.testkube.io/v1
+kind: Webhook
+metadata:
+  name: example-webhook
+  namespace: testkube
+spec:
+  uri: <YOUR_ENDPOINT_URL>
+  events:
+    - start-test
+    - end-test-success
+    - end-test-failed
+  selector: test-type=postman-collection
+  headers:
+    X-Token: "12345"
+    # https://docs.testkube.io/articles/webhooks/
+
+---
+
+apiVersion: executor.testkube.io/v1
+kind: Webhook
+metadata:
+  name: example-webhook-teams
+  namespace: testkube
+spec:
+  events:
+  - end-test-success
+  - end-test-failed
+  - end-test-aborted
+  - end-test-timeout
+  uri: https://xxxxx.webhook.office.com/xxxxxxxxx
+  payloadTemplate: "{\"text\": \"Test '{{ .TestExecution.TestName }}' execution ({{ .TestExecution.Number }}) finished with '{{ .TestExecution.ExecutionResult.Status }}' status\"}\n"
+
+
+  
