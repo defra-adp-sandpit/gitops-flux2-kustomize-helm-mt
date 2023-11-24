@@ -1,21 +1,23 @@
-apiVersion: tests.testkube.io/v2
+apiVersion: tests.testkube.io/v3
 kind: TestSuite
 metadata:
   name: ffc-demo-web-all-tests
   namespace: testkube
+  labels:
+    app: ffc-demo-web  
 spec:
   description: Execute full Test Suite of ffc-demo-web micro service
   executionRequest: {}
   steps:
   - stopOnFailure: false
     execute:
-      fc-demo-web-load-tests
-      ffc-demo-web-load-tests-afd
+    - test: fc-demo-web-load-tests
+    - test: ffc-demo-web-load-tests-afd
   - stopOnFailure: false
     downloadArtifacts:
       allPreviousSteps: true
     execute:
-    - delay: 1s
+      - delay: 1s
   - stopOnFailure: false
     downloadArtifacts:
       allPreviousSteps: false  
