@@ -11,10 +11,12 @@ spec:
   - stopOnFailure: false
     execute:
     - test: fc-demo-web-load-tests
-    - test: ffc-demo-web-load-tests-afd
   - stopOnFailure: false
-    downloadArtifacts:
-      allPreviousSteps: false  
+    execute:
+    - test: ffc-demo-web-load-tests-afd    
+  - stopOnFailure: false
+    # downloadArtifacts:
+    #   allPreviousSteps: false  
     execute:
     - delay: 1s
     - test: ffc-demo-web-acceptance-tests
