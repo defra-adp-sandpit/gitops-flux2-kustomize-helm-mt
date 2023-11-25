@@ -11,14 +11,13 @@ spec:
   - stopOnFailure: false
     execute:
     - test: fc-demo-web-load-tests
+      namespace: testkube
     - test: ffc-demo-web-load-tests-afd
-  - stopOnFailure: false
-    downloadArtifacts:
-      allPreviousSteps: true
-    execute:
-      - delay: 1s
+      namespace: testkube
   - stopOnFailure: false
     downloadArtifacts:
       allPreviousSteps: false  
     execute:
+    - delay: 1s
     - test: ffc-demo-web-acceptance-tests
+      namespace: testkube
