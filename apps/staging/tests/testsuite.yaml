@@ -3,8 +3,8 @@ kind: TestSuite
 metadata:
   name: ffc-demo-web-all-tests
   namespace: testkube
-  # labels:
-  #   app: ffc-demo-web  
+  labels:
+    app: ffc-demo-web  
 spec:
   description: Execute full Test Suite of ffc-demo-web micro service
   steps:
@@ -14,9 +14,10 @@ spec:
   - stopOnFailure: false
     execute:
     - test: ffc-demo-web-load-tests-afd    
-  - stopOnFailure: false
-    # downloadArtifacts:
-    #   allPreviousSteps: false  
+  - stopOnFailure: false 
     execute:
-    - delay: 1s
-    - test: ffc-demo-web-acceptance-tests
+    - delay: 5s
+  # - stopOnFailure: false 
+  #   execute:
+  #   - delay: 1s
+  #   - test: ffc-demo-web-acceptance-tests    
