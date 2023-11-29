@@ -16,3 +16,4 @@ spec:
   testSelector:
     name: ffc-demo-web-all-tests
     namespace: testkube
+    
