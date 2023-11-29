@@ -11,4 +11,4 @@ spec:
     namespace: cluster-config
   path: "./infrastructure/testkube/core/"
   prune: true
-  timeout: 5m
+  timeout: 10m
