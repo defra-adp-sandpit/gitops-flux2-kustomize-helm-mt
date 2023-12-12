@@ -39,4 +39,4 @@ spec:
         type: basic
         value: "1"
       
-  type: webdriverio/acceptancetest
+  type: webdriverio/test
