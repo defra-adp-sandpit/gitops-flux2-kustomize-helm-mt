@@ -6,6 +6,6 @@ resources:
   - redis
   - dashboard/
   - testkube/
-  # - selenium-grid/
+  - selenium-grid/
   - app-config-service/
   - priority-class.yaml
