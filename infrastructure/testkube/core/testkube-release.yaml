@@ -100,8 +100,9 @@ spec:
         #       - testkube-api
         #     secretName: testkube-cert-secret
       mongodb:
-        dsn: mongodb://aksfluxpoc08-account-cosmos.mongo.cosmos.azure.com:10255
-
+        # dsn: mongodb://aksfluxpoc08-account-cosmos.mongo.cosmos.azure.com:10255
+        secretName: testkube-secrets
+        secretKey: mongo-dsn
 
 
     testkube-dashboard:
