@@ -124,3 +124,7 @@ spec:
         #       - testkube-dashboard.local
         #     secretName: testkube-cert-secret
       apiServerEndpoint: "testkube-api.local:8080/results"
+
+    mongodb:
+      # -- Toggle whether to install MongoDB
+      enabled: false
